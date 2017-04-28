@@ -4,14 +4,20 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Base64 {
 
     private Base64() {}
+
+    public static <T> T requireNonNull(T obj) {
+        if (obj == null)
+            throw new NullPointerException();
+        return obj;
+    }
 
     /**
      * Returns a {@link Encoder} that encodes using the
@@ -63,7 +69,7 @@ public class Base64 {
      *          RFC 2045.
      */
     public static Encoder getMimeEncoder(int lineLength, byte[] lineSeparator) {
-        Objects.requireNonNull(lineSeparator);
+        requireNonNull(lineSeparator);
         int[] base64 = Decoder.fromBase64;
         for (byte b : lineSeparator) {
             if (base64[b & 0xff] != -1)
@@ -300,7 +306,7 @@ public class Base64 {
          *          specified Base64 encoded format
          */
         public OutputStream wrap(OutputStream os) {
-            Objects.requireNonNull(os);
+            requireNonNull(os);
             return new EncOutputStream(os, isURL ? toBase64URL : toBase64,
                     newline, linemax, doPadding);
         }
@@ -481,7 +487,13 @@ public class Base64 {
          *          if {@code src} is not in valid Base64 scheme
          */
         public byte[] decode(String src) {
-            return decode(src.getBytes(StandardCharsets.ISO_8859_1));
+//            return decode(src.getBytes(StandardCharsets.ISO_8859_1));
+            try {
+                return decode(src.getBytes("ISO-8859-1"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
         /**
@@ -578,7 +590,7 @@ public class Base64 {
          *          byte stream
          */
         public InputStream wrap(InputStream is) {
-            Objects.requireNonNull(is);
+            requireNonNull(is);
             return new DecInputStream(is, isURL ? fromBase64URL : fromBase64, isMIME);
         }
 

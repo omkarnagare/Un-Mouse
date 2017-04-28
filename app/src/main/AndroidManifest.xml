@@ -35,6 +35,7 @@
             android:name=".Activity.BluetoothDeviceSelectActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:name=".Activity.TCPActivity"
             android:screenOrientation="landscape" />
         <activity

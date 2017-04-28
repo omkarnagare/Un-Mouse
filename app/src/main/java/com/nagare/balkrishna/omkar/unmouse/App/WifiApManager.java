@@ -73,7 +73,7 @@ class WifiApManager
                     wificonfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
                 } else {
                     wificonfiguration.preSharedKey = password;
-                    wificonfiguration.hiddenSSID = true;
+//                    wificonfiguration.hiddenSSID = true;
                     wificonfiguration.status = WifiConfiguration.Status.ENABLED;
                     wificonfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
                     wificonfiguration.allowedProtocols.set(WifiConfiguration.Protocol.RSN);

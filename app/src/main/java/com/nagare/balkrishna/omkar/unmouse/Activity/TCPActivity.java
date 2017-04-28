@@ -87,7 +87,7 @@ public class TCPActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_tcp);
 
         setUpUI();
@@ -948,6 +948,7 @@ public class TCPActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
+            closeResources();
             super.onBackPressed();
             return;
         }
@@ -966,7 +967,6 @@ public class TCPActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        closeResources();
         super.onDestroy();
     }
 
