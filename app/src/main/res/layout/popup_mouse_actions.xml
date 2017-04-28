@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/mouse_middle_button"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:background="@drawable/ic_action_mouse_middle_click" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="0dp" />
+
+    <Button
+        android:id="@+id/mouse_right_button"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:background="@drawable/ic_action_mouse_right_click" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="0dp" />
+
+    <Button
+        android:id="@+id/mouse_close_button"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:background="@drawable/ic_action_cancel_red" />
+
+</LinearLayout>

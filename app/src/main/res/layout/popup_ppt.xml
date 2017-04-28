@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal">
+
+    <Button
+        android:background="@drawable/ic_action_play_circle_filled"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:id="@+id/start_stop_ppt_button" />
+    <View
+        android:layout_width="5dp"
+        android:layout_height="0dp" />
+    <Button
+        android:background="@drawable/ic_action_keyboard_arrow_left"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:id="@+id/backward_ppt_button" />
+    <View
+        android:layout_width="5dp"
+        android:layout_height="0dp" />
+
+    <Button
+        android:background="@drawable/ic_action_keyboard_arrow_right"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:id="@+id/forward_ppt_button" />
+    <View
+        android:layout_width="5dp"
+        android:layout_height="0dp" />
+
+    <Button
+        android:background="@drawable/ic_action_stop"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:id="@+id/exit_ppt_button" />
+</LinearLayout>

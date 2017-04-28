@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corners_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/escape_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Esc" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/tab_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Tab" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/insert_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Ins" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Del" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Home" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/end_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="End" />
+
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/cut_button"
+            android:layout_height="35sp"
+            android:background="@drawable/ic_action_content_cut"
+            android:layout_width="35sp" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/copy_button"
+            android:layout_width="35sp"
+            android:background="@drawable/ic_action_content_copy"
+            android:layout_height="35sp" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/backspace_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_backspace" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="0sp"
+        android:layout_height="5sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/capslock_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_capslock" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/shift_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Shift" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <EditText
+            android:id="@+id/message_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="9"
+            android:gravity="center_horizontal"
+            android:hint="type text here"
+            android:inputType="textPersonName" />
+
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/arrow_up_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_arrow_up" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/paste_button"
+            android:layout_width="35sp"
+            android:background="@drawable/ic_action_content_paste"
+            android:layout_height="35sp" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/enter_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_return" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="0sp"
+        android:layout_height="5sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/control_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Ctrl" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/windows_button"
+            android:background="@drawable/ic_action_desktop_windows"
+            android:layout_width="35sp"
+            android:layout_height="35sp" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/alt_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Alt" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/spacebar_button"
+            android:layout_width="50sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_space_bar" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Send" />
+
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/arrow_left_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_arrow_left" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/arrow_down_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_arrow_down" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/arrow_right_button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/ic_action_keyboard_arrow_right" />
+
+        <View
+            android:layout_width="5sp"
+            android:layout_height="0sp" />
+
+        <Button
+            android:id="@+id/close_popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_button"
+            android:minHeight="0sp"
+            android:minWidth="0sp"
+            android:text="Close" />
+
+    </LinearLayout>
+</LinearLayout>

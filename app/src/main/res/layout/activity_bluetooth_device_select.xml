@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/device_select_activity_layout"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.nagare.balkrishna.omkar.unmouse.Activity.BluetoothDeviceSelectActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:id="@+id/saved_device_layout"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintBottom_toTopOf="@+id/top_hgl"
+        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/top_hgl_for_header">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="16dp" />
+        <TextView
+            android:id="@+id/saved_device_list_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="Saved devices :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+
+        <View
+            android:id="@+id/hs1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="16dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:id="@+id/saved_devices_list" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/hs3"
+        android:background="#c0c0c0"
+        app:layout_constraintTop_toBottomOf="@+id/device_list_header"
+        android:layout_width="0dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="2dp" />
+
+    <TextView
+        android:text="Please select any of the following device to connect to : "
+        android:layout_width="0dp"
+        android:textColor="#fff"
+        android:layout_height="wrap_content"
+        android:id="@+id/device_list_header"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="@+id/top_hgl"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_hgl"
+        app:layout_constraintGuide_percent="0.4"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="227dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ListView
+        android:layout_width="0dp"
+        android:scrollbars="vertical"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/devices_list"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/hs3"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/rescan_tv"
+        android:layout_marginBottom="8dp" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/mobile_add_device_select_bluetooth"
+        android:layout_width="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+
+    </com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:text="Un-Mouse."
+        android:layout_width="0dp"
+        android:id="@+id/header_bluetooth_device_select_activity"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        app:layout_constraintBottom_toTopOf="@+id/top_hgl_for_header"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_hgl_for_header"
+        app:layout_constraintGuide_percent="0.2"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="113dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:text="ReScan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="#fff"
+        android:background="@drawable/border"
+        android:id="@+id/rescan_tv"
+        app:layout_constraintBottom_toTopOf="@+id/mobile_add_device_select_bluetooth"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="60dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background"
+        android:id="@+id/background_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

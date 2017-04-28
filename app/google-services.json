@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "737566625766",
+    "firebase_url": "https://unmouse-firebase.firebaseio.com",
+    "project_id": "unmouse-firebase",
+    "storage_bucket": "unmouse-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737566625766:android:d066be5faa4d4f55",
+        "android_client_info": {
+          "package_name": "com.nagare.balkrishna.omkar.unmouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737566625766-3u6jlvtedis901ogt450ro767vvmcmtu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nagare.balkrishna.omkar.unmouse",
+            "certificate_hash": "6e8280c7a76de2230a7e06d32256fbd07d2257d7"
+          }
+        },
+        {
+          "client_id": "737566625766-kfc4v1js7tgqr6b9dqa9vjbmuqsjm0as.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnTkdT7pHW_1-qbAjB_hq-xsdyLHyTlWw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

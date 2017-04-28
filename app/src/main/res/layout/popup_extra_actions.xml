@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/presentation_button"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/ppt_button" />
+
+    <Button
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/keyboard_button"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/keyboard_button" />
+
+    <Button
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/mouse_button"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/mouse_button" />
+</LinearLayout>
