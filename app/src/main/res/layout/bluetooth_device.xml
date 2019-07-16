@@ -13,15 +13,6 @@
         android:gravity="left"
         android:orientation="horizontal">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Device name : "
-            android:textColor="#fff"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
-
         <TextView
             android:id="@+id/device_name"
             android:layout_width="wrap_content"
@@ -32,32 +23,4 @@
 
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="left"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Device address : "
-            android:textColor="#fff"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
-
-        <TextView
-            android:id="@+id/device_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="#fff"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
-
-    </LinearLayout>
-
-
 </LinearLayout>

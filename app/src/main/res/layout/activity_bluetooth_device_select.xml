@@ -9,47 +9,6 @@
     android:background="@drawable/background"
     tools:context="com.nagare.balkrishna.omkar.unmouse.Activity.BluetoothDeviceSelectActivity">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:id="@+id/saved_device_layout"
-        android:orientation="vertical"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintBottom_toTopOf="@+id/top_hgl"
-        android:layout_marginBottom="16dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/top_hgl_for_header">
-        <View
-            android:layout_width="0dp"
-            android:layout_height="16dp" />
-        <TextView
-            android:id="@+id/saved_device_list_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:text="Saved devices :"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
-
-        <View
-            android:id="@+id/hs1"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="16dp" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:id="@+id/saved_devices_list" />
-
-    </LinearLayout>
-
     <View
         android:id="@+id/hs3"
         android:background="#c0c0c0"
@@ -80,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/top_hgl"
-        app:layout_constraintGuide_percent="0.4"
+        app:layout_constraintGuide_percent="0.2"
         android:orientation="horizontal"
         tools:layout_editor_absoluteY="227dp"
         tools:layout_editor_absoluteX="0dp" />

@@ -2,7 +2,6 @@ package com.nagare.balkrishna.omkar.unmouse.Entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
@@ -15,15 +14,10 @@ class BluetoothInfo
 
     private String bluetoothName;
 
-    @Index(unique = true)
-    private String bluetoothAddress;
-
-    @Generated(hash = 288659075)
-    public BluetoothInfo(Long bluetoothInfoId, String bluetoothName,
-            String bluetoothAddress) {
+    @Generated(hash = 329670955)
+    public BluetoothInfo(Long bluetoothInfoId, String bluetoothName) {
         this.bluetoothInfoId = bluetoothInfoId;
         this.bluetoothName = bluetoothName;
-        this.bluetoothAddress = bluetoothAddress;
     }
 
     @Generated(hash = 1947195037)
@@ -54,18 +48,6 @@ class BluetoothInfo
         this.bluetoothName = bluetoothName;
     }
 
-    public
-    String getBluetoothAddress()
-    {
-        return bluetoothAddress;
-    }
-
-    public
-    void setBluetoothAddress(String bluetoothAddress)
-    {
-        this.bluetoothAddress = bluetoothAddress;
-    }
-
     @Override
     public
     String toString()
@@ -73,7 +55,6 @@ class BluetoothInfo
         return "BluetoothInfo{" +
                 "bluetoothInfoId=" + bluetoothInfoId +
                 ", bluetoothName='" + bluetoothName + '\'' +
-                ", bluetoothAddress='" + bluetoothAddress + '\'' +
                 '}';
     }
 
@@ -84,12 +65,12 @@ class BluetoothInfo
 
         BluetoothInfo that = (BluetoothInfo) o;
 
-        return bluetoothAddress.equals(that.bluetoothAddress);
+        return bluetoothName.equals(that.bluetoothName);
 
     }
 
     @Override
     public int hashCode() {
-        return bluetoothAddress.hashCode();
+        return bluetoothName.hashCode();
     }
 }

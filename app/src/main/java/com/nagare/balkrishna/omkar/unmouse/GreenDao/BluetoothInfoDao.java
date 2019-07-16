@@ -26,7 +26,6 @@ public class BluetoothInfoDao extends AbstractDao<BluetoothInfo, Long> {
     public static class Properties {
         public final static Property BluetoothInfoId = new Property(0, Long.class, "bluetoothInfoId", true, "_id");
         public final static Property BluetoothName = new Property(1, String.class, "bluetoothName", false, "BLUETOOTH_NAME");
-        public final static Property BluetoothAddress = new Property(2, String.class, "bluetoothAddress", false, "BLUETOOTH_ADDRESS");
     }
 
 
@@ -43,11 +42,7 @@ public class BluetoothInfoDao extends AbstractDao<BluetoothInfo, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"BLUETOOTH_INFO\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: bluetoothInfoId
-                "\"BLUETOOTH_NAME\" TEXT," + // 1: bluetoothName
-                "\"BLUETOOTH_ADDRESS\" TEXT);"); // 2: bluetoothAddress
-        // Add Indexes
-        db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_BLUETOOTH_INFO_BLUETOOTH_ADDRESS ON BLUETOOTH_INFO" +
-                " (\"BLUETOOTH_ADDRESS\" ASC);");
+                "\"BLUETOOTH_NAME\" TEXT);"); // 1: bluetoothName
     }
 
     /** Drops the underlying database table. */
@@ -69,11 +64,6 @@ public class BluetoothInfoDao extends AbstractDao<BluetoothInfo, Long> {
         if (bluetoothName != null) {
             stmt.bindString(2, bluetoothName);
         }
- 
-        String bluetoothAddress = entity.getBluetoothAddress();
-        if (bluetoothAddress != null) {
-            stmt.bindString(3, bluetoothAddress);
-        }
     }
 
     @Override
@@ -89,11 +79,6 @@ public class BluetoothInfoDao extends AbstractDao<BluetoothInfo, Long> {
         if (bluetoothName != null) {
             stmt.bindString(2, bluetoothName);
         }
- 
-        String bluetoothAddress = entity.getBluetoothAddress();
-        if (bluetoothAddress != null) {
-            stmt.bindString(3, bluetoothAddress);
-        }
     }
 
     @Override
@@ -105,8 +90,7 @@ public class BluetoothInfoDao extends AbstractDao<BluetoothInfo, Long> {
     public BluetoothInfo readEntity(Cursor cursor, int offset) {
         BluetoothInfo entity = new BluetoothInfo( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // bluetoothInfoId
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // bluetoothName
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // bluetoothAddress
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // bluetoothName
         );
         return entity;
     }
@@ -115,7 +99,6 @@ public class BluetoothInfoDao extends AbstractDao<BluetoothInfo, Long> {
     public void readEntity(Cursor cursor, BluetoothInfo entity, int offset) {
         entity.setBluetoothInfoId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setBluetoothName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setBluetoothAddress(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     @Override

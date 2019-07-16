@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,7 +19,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +28,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.nagare.balkrishna.omkar.unmouse.App.UnMouseApp;
-import com.nagare.balkrishna.omkar.unmouse.Entity.BluetoothInfo;
 import com.nagare.balkrishna.omkar.unmouse.Entity.CommunicationType;
 import com.nagare.balkrishna.omkar.unmouse.GreenDao.BluetoothInfoDao;
 import com.nagare.balkrishna.omkar.unmouse.GreenDao.DaoSession;
@@ -53,9 +50,6 @@ public class BluetoothDeviceSelectActivity
 
     private BluetoothAdapter mBluetoothAdapter = null;
 
-    private TextView mSavedDeviceHeaderTextView = null;
-    private ListView mSavedDeviceListView = null;
-    private BluetoothDeviceListAdapter mSavedDeviceListAdapter = null;
     private ListView mDeviceListView = null;
     private BluetoothDeviceListAdapter mDeviceListAdapter = null;
     private ProgressDialog mProgressDlg = null;
@@ -65,16 +59,13 @@ public class BluetoothDeviceSelectActivity
     private List<BluetoothDeviceModel> mSavedDeviceList = null;
     private List<BluetoothDeviceModel> mDeviceList = null;
 
-    private int mHeight = 0;
-    private ConstraintLayout activityLayout = null;
-    private LinearLayout savedDeivceLayout = null;
-    private List<BluetoothInfo> savedBluetoothDevicesList = null;
-    private int listViewHeight = 0;
+//    private int mHeight = 0;
+//    private ConstraintLayout activityLayout = null;
+//    private int listViewHeight = 0;
     private Window mWindow = null;
 
     TextView mHeaderTextView = null;
     private Typeface custom_font_header = null;
-    private View horizaontalSeparator1 = null;
     private ImageView mBackGroundView = null;
     private TextView mRescanTextView = null;
     private InterstitialAd mInterstitialAd = null;
@@ -231,8 +222,7 @@ public class BluetoothDeviceSelectActivity
 
         mBackGroundView = (ImageView) findViewById(R.id.background_view);
 
-        activityLayout = (ConstraintLayout) findViewById(R.id.device_select_activity_layout);
-        savedDeivceLayout = (LinearLayout) findViewById(R.id.saved_device_layout);
+//        activityLayout = (ConstraintLayout) findViewById(R.id.device_select_activity_layout);
 
         guideline = (View) findViewById(R.id.top_hgl);
         mProgressDlg = new ProgressDialog(this);
@@ -251,9 +241,6 @@ public class BluetoothDeviceSelectActivity
             }
         });
 
-        mSavedDeviceHeaderTextView = (TextView) findViewById(R.id.saved_device_list_header);
-        mSavedDeviceListView = (ListView) findViewById(R.id.saved_devices_list);
-
         mDeviceList = new ArrayList<>();
 
         mDeviceListView = (ListView) findViewById(R.id.devices_list);
@@ -270,8 +257,6 @@ public class BluetoothDeviceSelectActivity
             }
         });
 
-        horizaontalSeparator1 = findViewById(R.id.hs1);
-
         mRescanTextView = (TextView) findViewById(R.id.rescan_tv);
         mRescanTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -286,8 +271,6 @@ public class BluetoothDeviceSelectActivity
 
             }
         });
-
-        fetchSavedDevices();
 
     }
 
@@ -367,7 +350,7 @@ public class BluetoothDeviceSelectActivity
                     "Yes",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            saveDeviceInDB(bluetoothDeviceModel);
+                            startBluetoothTCPActivity(bluetoothDeviceModel);
                             dialog.cancel();
                         }
                     });
@@ -408,27 +391,6 @@ public class BluetoothDeviceSelectActivity
         return false;
     }
 
-    private void saveDeviceInDB(BluetoothDeviceModel bluetoothDeviceModel) {
-
-        List<BluetoothInfo> savedBluetoothDevicesList = mBluetoothInfoDao.queryBuilder()
-                .where(BluetoothInfoDao.Properties.BluetoothAddress.isNotNull())
-                .build()
-                .list();
-
-        BluetoothInfo bluetoothInfo = new BluetoothInfo();
-        bluetoothInfo.setBluetoothName(bluetoothDeviceModel.getBluetoothDeviceName());
-        bluetoothInfo.setBluetoothAddress(bluetoothDeviceModel.getBluetoothDeviceAddress());
-
-        if (!savedBluetoothDevicesList.contains(bluetoothInfo)) {
-
-            mBluetoothInfoDao.insert(bluetoothInfo);
-
-        }
-
-        startBluetoothTCPActivity(bluetoothDeviceModel);
-
-    }
-
     private void startBluetoothTCPActivity(BluetoothDeviceModel bluetoothDeviceModel) {
 
         Intent intent = new Intent(BluetoothDeviceSelectActivity.this, TCPActivity.class);
@@ -439,185 +401,36 @@ public class BluetoothDeviceSelectActivity
 
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-
-        rearrangeListViewPositions();
-    }
-
-    private boolean rearrangeListViewPositions() {
-
-        mHeight = activityLayout.getHeight();
-
-        int headerHeight = mHeaderTextView.getHeight();
-
-        int currentlistViewHeight = savedDeivceLayout.getHeight();
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guideline.getLayoutParams();
-        params.guidePercent = ( currentlistViewHeight + headerHeight )/(mHeight*1.0f);
-        guideline.setLayoutParams(params);
-        if(currentlistViewHeight != listViewHeight){
-            listViewHeight = currentlistViewHeight;
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    private void fetchSavedDevices() {
-
-        savedBluetoothDevicesList = mBluetoothInfoDao.queryBuilder()
-                .where(BluetoothInfoDao.Properties.BluetoothAddress.isNotNull())
-                .build()
-                .list();
-
-        if (savedBluetoothDevicesList == null) {
-            hideSavedDevicesUIComponents();
-        } else {
-
-            if (savedBluetoothDevicesList.isEmpty()) {
-                hideSavedDevicesUIComponents();
-            } else {
-
-                mSavedDeviceList = new ArrayList<>();
-
-                for (BluetoothInfo bluetoothInfo : savedBluetoothDevicesList) {
-
-                    BluetoothDeviceModel bluetoothDeviceModel = new BluetoothDeviceModel();
-                    bluetoothDeviceModel.setBluetoothDeviceAddress(bluetoothInfo.getBluetoothAddress());
-                    bluetoothDeviceModel.setBluetoothDeviceName(bluetoothInfo.getBluetoothName());
-
-                    mSavedDeviceList.add(bluetoothDeviceModel);
-                }
-
-                mSavedDeviceListAdapter = new BluetoothDeviceListAdapter(mSavedDeviceList, this, R.layout.bluetooth_saved_device, this);
-                mSavedDeviceListView.setAdapter(mSavedDeviceListAdapter);
-                mSavedDeviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-                        BluetoothDeviceModel dataModel = mSavedDeviceList.get(position);
-//                        Toast.makeText(BluetoothDeviceSelectActivity.this, dataModel.getBluetoothDeviceName(),Toast.LENGTH_SHORT).show();
-                        showAlert(dataModel);
-
-                    }
-                });
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mSavedDeviceListAdapter.notifyDataSetChanged();
-                    }
-                });
-
-            }
-        }
-
-    }
-
-    private void hideSavedDevicesUIComponents() {
-
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guideline.getLayoutParams();
-        params.guidePercent = 0.05f;
-        guideline.setLayoutParams(params);
-
-        mSavedDeviceListView.setVisibility(View.GONE);
-        mSavedDeviceHeaderTextView.setVisibility(View.GONE);
-
-        horizaontalSeparator1.setVisibility(View.GONE);
-
-    }
-
-    private void setUpDB() {
-        // get the note DAO
-        mDaoSession = ((UnMouseApp) getApplication()).getDaoSession();
-        mBluetoothInfoDao = mDaoSession.getBluetoothInfoDao();
-
-//        testDBOperations();
-
-    }
-
-//    private
-//    void testDBOperations()
-//    {
-//        UserDao userDao    = mDaoSession.getUserDao();
-//        User user = new User();
-//        user.setName("Omkar");
-//        userDao.insert(user);
-//        Log.d(TAG,
-//              "setUpDB: user created with "+ user);
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
 //
-//        List<User> userList = userDao.queryBuilder().where(UserDao.Properties.Name.isNotNull()).build().list();
-//        Log.d(TAG,
-//              "setUpDB: "+ userList);
+//        rearrangeListViewPositions();
+//    }
 //
-//        user.setId(4L);
-//        user.setName("Snehal");
-//        userDao.update(user);
-//        Log.d(TAG,
-//              "setUpDB: user updated "+ user);
+//    private boolean rearrangeListViewPositions() {
 //
-//        userDao.deleteByKey(1L);
-//        userDao.detachAll();
-//        Log.d(TAG,
-//              "setUpDB: user deleted");
-//        userList = userDao.queryBuilder().where(UserDao.Properties.Name.isNotNull()).build().list();
-//        Log.d(TAG,
-//              "setUpDB: "+ userList);
+//        mHeight = activityLayout.getHeight();
+//
+//        int headerHeight = mHeaderTextView.getHeight();
+//
+//        int currentlistViewHeight = savedDeivceLayout.getHeight();
+//        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guideline.getLayoutParams();
+//        params.guidePercent = ( currentlistViewHeight + headerHeight )/(mHeight*1.0f);
+//        guideline.setLayoutParams(params);
+//        if(currentlistViewHeight != listViewHeight){
+//            listViewHeight = currentlistViewHeight;
+//            return true;
+//        }else{
+//            return false;
+//        }
+//
 //    }
 
-    public void deleteDeviceFromDatabase(BluetoothDeviceModel bluetoothDeviceModel){
-        BluetoothInfo bluetoothInfo = new BluetoothInfo();
-        bluetoothInfo.setBluetoothAddress(bluetoothDeviceModel.getBluetoothDeviceAddress());
-        bluetoothInfo.setBluetoothName(bluetoothDeviceModel.getBluetoothDeviceName());
-
-        if(savedBluetoothDevicesList != null) {
-            if (savedBluetoothDevicesList.contains(bluetoothInfo)) {
-
-                for (BluetoothInfo bI : savedBluetoothDevicesList) {
-                    if (bI.equals(bluetoothInfo)) {
-                        if (mBluetoothInfoDao != null) {
-                            mBluetoothInfoDao.deleteByKey(bI.getBluetoothInfoId());
-                        }
-                    }
-                }
-                savedBluetoothDevicesList.remove(bluetoothInfo);
-                if (savedBluetoothDevicesList.isEmpty()) {
-                    hideSavedDevicesUIComponents();
-                }
-            }
-        }
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                final boolean[] flag = {false};
-
-                while(true){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                           flag[0] = rearrangeListViewPositions();
-                        }
-                    });
-
-                    if(flag[0]){
-                        break;
-                    }else{
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-            }
-        });
-        thread.start();
-    };
+    private void setUpDB() {
+        mDaoSession = ((UnMouseApp) getApplication()).getDaoSession();
+        mBluetoothInfoDao = mDaoSession.getBluetoothInfoDao();
+    }
 
     @Override
     protected void onDestroy() {
