@@ -125,7 +125,7 @@ public class BluetoothDeviceSelectActivity
 
     private void showUnsupported() {
 
-        Toast.makeText(this, "Bluetooth is not supported in thid device", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Bluetooth is not supported in this device", Toast.LENGTH_LONG).show();
 
     }
 

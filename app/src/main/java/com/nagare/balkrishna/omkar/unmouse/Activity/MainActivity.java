@@ -1,5 +1,7 @@
 package com.nagare.balkrishna.omkar.unmouse.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -33,6 +35,8 @@ public class MainActivity
 
     private Typeface custom_font_description = null;
     private Typeface custom_font_header = null;
+
+    private AlertDialog.Builder mAlertDialogBuilder = null;
 
     InterstitialAd mInterstitialAd = null;
 
@@ -72,10 +76,31 @@ public class MainActivity
         mBluetoothTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,
-                        BluetoothDeviceSelectActivity.class);
-                startActivity(intent);
-//                finish();
+
+                mAlertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                mAlertDialogBuilder.setTitle("Confirmation Required");
+                mAlertDialogBuilder.setMessage("Un-mouse uses device's bluetooth MAC address to connect to the PC. This information will be hidden always and internal to the use of the application.\nDo you wish to proceed?" );
+                mAlertDialogBuilder.setCancelable(false);
+
+                mAlertDialogBuilder.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(MainActivity.this,
+                                        BluetoothDeviceSelectActivity.class);
+                                startActivity(intent);
+                                dialog.cancel();
+                            }
+                        });
+
+                mAlertDialogBuilder.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                mAlertDialogBuilder.create().show();
 
             }
         });
