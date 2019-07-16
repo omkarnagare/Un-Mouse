@@ -11,12 +11,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 26
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.nagare.balkrishna.omkar.unmouse"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 2
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -43,15 +43,21 @@ dependencies {
             {
                 exclude group: 'com.android.support', module: 'support-annotations'
             })
-    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:appcompat-v7:26.0.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'com.google.code.gson:gson:2.6.2'
-    compile 'com.android.support:design:24.2.0'
+    compile 'com.android.support:design:26.0.0'
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-ads:10.2.0'
     compile 'com.google.android.gms:play-services-ads:10.2.0'
+}
+
+repositories {
+     maven {
+         url 'https://maven.google.com'
+     }
 }
 
 apply plugin: 'com.google.gms.google-services'
