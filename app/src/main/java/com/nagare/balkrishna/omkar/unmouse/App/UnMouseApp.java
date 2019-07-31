@@ -1,10 +1,11 @@
 package com.nagare.balkrishna.omkar.unmouse.App;
 
 import android.app.Application;
-import android.os.Environment;
 import android.util.Log;
 
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.nagare.balkrishna.omkar.unmouse.GreenDao.DaoMaster;
 import com.nagare.balkrishna.omkar.unmouse.GreenDao.DaoSession;
 
@@ -32,7 +33,11 @@ public class UnMouseApp
 
     private void setUpAdds() {
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-8786806562583765~9737954739");
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
 
     }
 

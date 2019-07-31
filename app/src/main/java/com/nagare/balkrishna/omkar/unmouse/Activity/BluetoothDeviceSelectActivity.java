@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -44,6 +46,8 @@ public class BluetoothDeviceSelectActivity
     private static final String TAG = "BluetoothDeviceSelect";
     private static final String DEVICE_ADDRESS = "bluetoothDeviceAddress";
     private static final String COMMUNICATION_TYPE = "communicationType";
+    private static final String DEVICE_FOUND_MESSAGE = "Please select any of the following device to connect to :";
+    private static final String DEVICE_NOT_FOUND_MESSAGE = "No Bluetooth device found ... ";
 
     private DaoSession mDaoSession = null;
     private BluetoothInfoDao mBluetoothInfoDao = null;
@@ -51,6 +55,7 @@ public class BluetoothDeviceSelectActivity
     private BluetoothAdapter mBluetoothAdapter = null;
 
     private ListView mDeviceListView = null;
+    private TextView mDeviceListHeaderTextView = null;
     private BluetoothDeviceListAdapter mDeviceListAdapter = null;
     private ProgressDialog mProgressDlg = null;
     private AlertDialog.Builder mAlertDialogBuilder = null;
@@ -184,6 +189,18 @@ public class BluetoothDeviceSelectActivity
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 mProgressDlg.dismiss();
                 mBackGroundView.setVisibility(View.GONE);
+                if (mDeviceList.isEmpty()){
+                    mDeviceListHeaderTextView.setText(DEVICE_NOT_FOUND_MESSAGE);
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guideline.getLayoutParams();
+                    params.guidePercent = 0.45f;
+                    guideline.setLayoutParams(params);
+                }else {
+                    mDeviceListHeaderTextView.setText(DEVICE_FOUND_MESSAGE);
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guideline.getLayoutParams();
+                    params.guidePercent = 0.2f;
+                    guideline.setLayoutParams(params);
+                }
+
             } else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
@@ -241,9 +258,12 @@ public class BluetoothDeviceSelectActivity
             }
         });
 
+        mDeviceListHeaderTextView = findViewById(R.id.device_list_header);
+        mDeviceListHeaderTextView.setText(DEVICE_FOUND_MESSAGE);
+
         mDeviceList = new ArrayList<>();
 
-        mDeviceListView = (ListView) findViewById(R.id.devices_list);
+        mDeviceListView = findViewById(R.id.devices_list);
         mDeviceListAdapter = new BluetoothDeviceListAdapter(mDeviceList, this, R.layout.bluetooth_device, this);
         mDeviceListView.setAdapter(mDeviceListAdapter);
         mDeviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
