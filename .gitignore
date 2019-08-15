@@ -1,0 +1,6 @@
+.gradle/
+.idea/
+app/release/
+build/
+sh.exe.stackdump
+app/google-services.json
