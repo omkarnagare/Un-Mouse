@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.nagare.balkrishna.omkar.unmouse.GreenDao.DaoMaster;
 import com.nagare.balkrishna.omkar.unmouse.GreenDao.DaoSession;
 
@@ -19,6 +20,8 @@ public class UnMouseApp
 
     public static final boolean ENCRYPTED = false;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     private DaoSession daoSession;
 
     @Override
@@ -27,8 +30,15 @@ public class UnMouseApp
 
         setUpDB();
 
+        setUpFirebaseAnalytics();
+
         setUpAdds();
 
+    }
+
+    private void setUpFirebaseAnalytics() {
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
     }
 
     private void setUpAdds() {
@@ -43,7 +53,7 @@ public class UnMouseApp
 
     private void setUpDB() {
 
-        File   file   = new File(getCacheDir(), "db");
+        File file   = new File(getCacheDir(), "db");
         if (!file.exists())
         {
             if (file.mkdir())
@@ -59,7 +69,7 @@ public class UnMouseApp
         }
 
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? file +"/test-db-encrypted" : file +"/test-db");
-        Database                db     = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+        Database db     = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
 
     }

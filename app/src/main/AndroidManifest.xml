@@ -24,7 +24,7 @@
         android:theme="@style/UnMouseThemeDark">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8786806562583765~9737954739"/>
+            android:value="ca-app-pub-7466893006911881~7104929862"/>
         <activity
             android:name=".Activity.MainActivity"
             android:screenOrientation="portrait">

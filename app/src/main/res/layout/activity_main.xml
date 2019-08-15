@@ -33,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:textColor="#fff"
         android:background="@drawable/border"
         android:text="Wi-Fi"
@@ -40,7 +41,8 @@
         app:layout_constraintTop_toTopOf="@+id/bottom_hg"
         android:layout_marginTop="32dp"
         app:layout_constraintRight_toLeftOf="@+id/vgl"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"/>
 
     <TextView
         android:id="@+id/bluetooth_tv"
@@ -51,11 +53,13 @@
         android:background="@drawable/border"
         android:text="Bluetooth"
         android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottom_hg"
         android:layout_marginTop="32dp"
         app:layout_constraintLeft_toLeftOf="@+id/vgl"
-        android:layout_marginStart="8dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"/>
 
     <TextView
         android:id="@+id/description"
@@ -75,18 +79,17 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/mobile_add_main_activity"
+        android:id="@+id/banner_add"
         android:layout_width="wrap_content"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp">
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp">
-
     </com.google.android.gms.ads.AdView>
 
     <androidx.constraintlayout.widget.Guideline

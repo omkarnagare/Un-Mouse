@@ -60,8 +60,8 @@ class WifiApManager
 
             if(ssid.equals("") || ssid.isEmpty()){
                 Log.d(TAG, "configApState: Empty ssid");
-                Method  wifiApConfigurationMethod = wifimanager.getClass().getMethod("getWifiApConfiguration",null);
-                wificonfiguration = (WifiConfiguration)wifiApConfigurationMethod.invoke(wifimanager, null);
+                Method  wifiApConfigurationMethod = wifimanager.getClass().getMethod("getWifiApConfiguration", (Class<?>) null);
+                wificonfiguration = (WifiConfiguration)wifiApConfigurationMethod.invoke(wifimanager, (Object) null);
             }else {
                 wificonfiguration = new WifiConfiguration();
                 wificonfiguration.SSID = ssid;

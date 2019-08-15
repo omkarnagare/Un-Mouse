@@ -151,12 +151,12 @@ public class WifiHotspotActivity extends AppCompatActivity {
         AdView mAdView = (AdView) findViewById(R.id.mobile_add_hotspot_activity);
         AdRequest adRequest = new AdRequest.Builder()
 //                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-//                .addTestDevice("BAEFA564A6DF839A4CFA254BBC93ACAC")
+//                .addTestDevice("5F580625FEC4ACA3B6ACC70C67490CBB")
                 .build();
         mAdView.loadAd(adRequest);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-8786806562583765/7737367536");
+        mInterstitialAd.setAdUnitId("ca-app-pub-7466893006911881/6583660462");
 
         mInterstitialAd.setAdListener(new AdListener() {
 
@@ -179,7 +179,7 @@ public class WifiHotspotActivity extends AppCompatActivity {
     private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder()
 //                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-//                .addTestDevice("BAEFA564A6DF839A4CFA254BBC93ACAC")
+//                .addTestDevice("5F580625FEC4ACA3B6ACC70C67490CBB")
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
